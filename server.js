@@ -2,11 +2,10 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const { render } = require('@react-email/render');
 const React = require('react');
-const path = require('path');
 const dotenv = require('dotenv');
 
-// Load environment variables from parent directory
-dotenv.config({ path: path.join(__dirname, '..', '.env') });
+// Load environment variables
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -125,7 +124,6 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 4000;app.listen(PORT, () => {
   console.log(`Email handler service running on port ${PORT}`);
 });
